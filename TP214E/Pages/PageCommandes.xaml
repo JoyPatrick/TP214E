@@ -6,7 +6,136 @@
         xmlns:local="clr-namespace:TP214E.Pages"
         mc:Ignorable="d"
         Title="PageCommandes" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="LightGray">
+        <Label x:Name="lblTitrePage" Content="Chez victor" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36"/>
+        <ListView x:Name="lstViewCommandeEnCours" Margin="0,52,471,98">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListView x:Name="lstViewHistoriqueCommandes" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Height="372" Width="368">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ListView>
+        <Label x:Name="lblSousTotal" Content="Sous-Total:" HorizontalAlignment="Left" Margin="0,342,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTPS" Content="TPS" HorizontalAlignment="Left" Margin="0,367,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTotal" Content="Total: " HorizontalAlignment="Left" Margin="182,354,0,0" VerticalAlignment="Top" Height="37" Width="55" FontSize="20"/>
+        <Label x:Name="lblTVQ" Content="TVQ" HorizontalAlignment="Left" Margin="0,392,0,0" VerticalAlignment="Top" Uid="Q"/>
+        <Button x:Name="btnAjouterKit" Content="Ajouter kit ustensile" Height="40" Width="128" Background="#FF7DF568" Margin="334,57,338,338" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Click="btnAjouterKit_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="BtnAjouterCondiments" Content="Ajouter condiments" Height="40" Width="128" Background="#FF7DF568" Margin="334,102,338,293"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Click="BtnAjouterCondiments_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btnAjouterPlatCommande" Content="Ajouter un plat" Height="40" Width="128" Background="#FF7DF568" Margin="334,147,338,248"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Click="btnAjouterPlatCommande_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btnDupliquerPlatCommande" Content="Dupliquer plat" Height="40" Background="#FF7DF568" Margin="334,192,338,203" Click="btnDupliquerRecette_Click" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="12" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btnSupprimerPlatCommande" Content="Supprimer plat" Height="40" Background="#FF7DF568" Margin="334,237,338,158" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="12" Click="btnSupprimerPlatCommande_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label x:Name="lblCommandeEnCours" Content="La commande en cours" HorizontalAlignment="Left" Margin="63,22,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <ListView x:Name="lstViewRecettes" Margin="468,57,3,93">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListView x:Name="lstViewRecetteDeCommande" Height="372" Width="368">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ListView>
+        <Label x:Name="lblListePlats" Content="Liste des plats" HorizontalAlignment="Left" Margin="531,27,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="btnPayer" Content="Payer" Background="#FF7DF568" Margin="512,363,131,18"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="24" Click="btnPayer_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btnHistoriqueCommandes" Content="Historique des Commande" Background="#FF7DF568" Margin="334,282,337,108" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="12" Click="btnHistoriqueCommandes_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <ListView x:Name="lstViewRecetteDeCommande_Copy" Margin="432,57,0,5" Visibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lstViewHistoriqueCommandes_Copy" Margin="0,53,432,9" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Visibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnRetour" Content="Retour page commande" Height="40" Width="128" Background="#FF7DF568" Margin="10,7,662,388" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Visibility="Hidden" Click="btnRetour_Click" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
     </Grid>
 </Window>

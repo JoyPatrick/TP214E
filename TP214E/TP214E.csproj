@@ -22,4 +22,10 @@
     <Resource Include="Ressources\Images\victorLogo2.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Pages\PageHistoriqueCommande.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

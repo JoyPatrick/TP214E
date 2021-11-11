@@ -8,7 +8,42 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Inventaire">
 
-    <Grid>
-        
+    <Grid Background="LightBlue">
+        <ListView x:Name="lstViewInventaireAliment" Margin="433,132,197,7">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAjouter" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="642,384,30,26" Click="btnAjouter_Click" />
+        <Button x:Name="btnModifierAliment" Content="Modifier aliment" Height="40" Width="128" Background="White" Margin="465,62,207,348" Click="btnModifierAliment_Click" />
+        <Button x:Name="btnSupprimerAliment" Content="Supprimer aliment" Height="40" Width="128" Background="White" Margin="465,10,207,400" Click="btnSupprimerAliment_Click" />
+        <TextBox x:Name="txtNombreStock" HorizontalAlignment="Left" Margin="650,55,0,0" Text="Nombre" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Ajout d'un stock" HorizontalAlignment="Left" Margin="648,19,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lblAjoutModifierUnAliment" Content="Ajout d'un aliment" HorizontalAlignment="Left" Margin="636,224,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="cbTypeAliment" HorizontalAlignment="Left" Margin="650,82,0,0" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="dtDateExpiration" HorizontalAlignment="Left" Margin="650,119,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNomAliment" HorizontalAlignment="Left" Margin="646,264,0,0" Text="Nom" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUniteAliment" HorizontalAlignment="Left" Margin="646,291,0,0" Text="Unité" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAjouter_Copy" Content="Ajouter un stock" Height="40" Width="128" Background="White" Margin="650,156,22,254" Click="btnAjouter_Click" />
+        <Button x:Name="btnModifierType" Content="Modifier un aliment" Height="40" Width="128" Background="White" Margin="642,328,30,82" IsEnabled="False" Click="btnModifierType_Click" />
+        <Label Content="Aliment" HorizontalAlignment="Left" Margin="494,107,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="lstViewInventaireAutre" Margin="21,129,565,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Autre" HorizontalAlignment="Left" Margin="81,102,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombreUstensile" HorizontalAlignment="Left" Margin="21,13,0,0" Text="Nombre kit " TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="17">
+            <TextBox.Style>
+                <Style/>
+            </TextBox.Style>
+        </TextBox>
+        <Button x:Name="btnAjouterUsentile" Content="Ajouter Kit" Background="White" Margin="106,5,565,406" Click="btnAjouterUsentile_Click" />
+
+
     </Grid>
 </Page>

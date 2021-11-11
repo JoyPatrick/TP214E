@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TP214E.Data;
+using TP214E.Pages;
 
 namespace TP214E
 {
@@ -33,9 +34,15 @@ namespace TP214E
             this.NavigationService.Navigate(frmInventaire);
 
             
+
+            
         }
         private void BoutonCommandes_Click(object sender, RoutedEventArgs e)
         {
+            //PageCommandes frmCommande = new PageCommandes(dal);
+
+            //this.NavigationService.Navigate(frmCommande);
+            // Erreur?
             this.NavigationService.Navigate(new Uri("Pages/PageCommandes.xaml", UriKind.Relative));
         }
     }
