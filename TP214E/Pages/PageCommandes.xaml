@@ -6,17 +6,26 @@
         xmlns:local="clr-namespace:TP214E.Pages"
         mc:Ignorable="d"
         Title="PageCommandes" Height="437" Width="768">
-    <Grid ShowGridLines="True" Background="black">
+    <Grid  Background="black">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Label x:Name="lblTitrePage" Content="Chez victor" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="294,0,0,0"/>
-        <ListView x:Name="lstViewCommandeEnCours" Margin="0,70,479,98">
+        <Label x:Name="lblTitrePage" Grid.Row="0" Grid.Column="1" Content="Chez victor" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="0,0,0,0" RenderTransformOrigin="0.501,0.5"/>
+        <ListView Grid.Column="0" x:Name="lstViewCommandeEnCours" Margin="0,70,10,112" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <ListView x:Name="lstViewHistoriqueCommandes" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Height="296" Width="259">
+            <ListView x:Name="lstViewHistoriqueCommandes" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Grid.Column="0" Height="291" Width="273">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
@@ -24,11 +33,7 @@
                 </ListView.View>
             </ListView>
         </ListView>
-        <Label x:Name="lblSousTotal" Content="Sous-Total:" HorizontalAlignment="Left" Margin="29,344,0,0" VerticalAlignment="Top"  Foreground="white" Background="#00000000"/>
-        <Label x:Name="lblTPS" Content="TPS" HorizontalAlignment="Left" Foreground="white" Margin="38,365,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTotal" Content="Total: " HorizontalAlignment="Left" Margin="182,354,0,0" VerticalAlignment="Top" Height="37" Width="55" FontSize="20" Foreground="white" Background="#00000000"/>
-        <Label x:Name="lblTVQ" Content="TVQ" HorizontalAlignment="Left" Margin="36,396,0,0" VerticalAlignment="Top" Uid="Q" Foreground="white" Background="#00000000"/>
-        <Button x:Name="btnAjouterKit" Content="Ajouter kit ustensile" Height="40" Width="128" Background="#CC5F8C5A" Margin="322,76,318,321"   BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="btnAjouterKit_Click" Foreground="White">
+        <Button x:Name="btnAjouterKit"  Grid.Row="1" Grid.Column="1" Content="Ajouter kit ustensile" Width="161" Background="#CC5F8C5A" Margin="13,12,0,310"   BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="btnAjouterKit_Click" Foreground="White" HorizontalAlignment="Left">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -38,7 +43,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="BtnAjouterCondiments" Content="Ajouter condiments" Height="40" Width="128" Background="#CC5F8C5A" Margin="322,121,318,276"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="BtnAjouterCondiments_Click" Foreground="White">
+        <Button x:Name="BtnAjouterCondiments" Grid.Row="1"  Grid.Column="1" Content="Ajouter condiments" Width="161" Background="#CC5F8C5A" Margin="13,59,0,264"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="BtnAjouterCondiments_Click" Foreground="White" HorizontalAlignment="Left">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -48,7 +53,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnAjouterPlatCommande" Content="Ajouter un plat" Height="40" Width="128" Background="#CC5F8C5A" Margin="322,166,318,231"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="btnAjouterPlatCommande_Click" Foreground="White">
+        <Button x:Name="btnAjouterPlatCommande" Grid.Row="1"  Grid.Column="1" Content="Ajouter un plat" Background="#CC5F8C5A" Margin="0,106,26,217"  BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="btnAjouterPlatCommande_Click" Foreground="White" HorizontalAlignment="Right" Width="161">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -58,7 +63,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnDupliquerPlatCommande" Content="Dupliquer plat" Height="40" Background="#CC5F8C5A" Margin="322,211,318,186" Click="btnDupliquerRecette_Click" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Foreground="White">
+        <Button x:Name="btnDupliquerPlatCommande" Grid.Column="1" Content="Dupliquer plat" Background="#CC5F8C5A" Margin="13,152,0,170" Click="btnDupliquerRecette_Click" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Foreground="White" HorizontalAlignment="Left" Width="161" Grid.Row="1">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -68,7 +73,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnSupprimerPlatCommande" Content="Supprimer plat" Height="40" Background="#CC5F8C5A" Margin="322,256,318,141" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Click="btnSupprimerPlatCommande_Click" Foreground="White">
+        <Button x:Name="btnSupprimerPlatCommande" Grid.Row="1" Grid.Column="1" Content="Supprimer plat" Background="#CC5F8C5A" Margin="13,199,0,124" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Click="btnSupprimerPlatCommande_Click" Foreground="White" HorizontalAlignment="Left" Width="161">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -78,8 +83,16 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label x:Name="lblCommandeEnCours" Content="La commande en cours" HorizontalAlignment="Left" Margin="63,38,0,0" Foreground="white" VerticalAlignment="Top" FontSize="16"/>
-        <ListView x:Name="lstViewRecettes" Margin="512,57,3,108">
+        <Label x:Name="lblCommandeEnCours" Grid.Column="0" Content="La commande en cours" HorizontalAlignment="Left" Margin="63,38,0,0" Foreground="white" VerticalAlignment="Top" FontSize="16"/>
+        <ListView x:Name="lstViewRecettes" Grid.Column="2" Margin="0,0,29,112" HorizontalAlignment="Right" Width="271" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListView.RenderTransform>
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -93,18 +106,18 @@
                 </ListView.View>
             </ListView>
         </ListView>
-        <Label x:Name="lblListePlats" Content="Liste des plats" HorizontalAlignment="Left" Margin="531,27,0,0" VerticalAlignment="Top" Foreground="white" FontSize="16"/>
-        <Button x:Name="btnPayer" Content="Payer" Background="#CC5F8C5A" Margin="512,363,131,18"  BorderThickness="0.5,0.5,1.5,1.5" Foreground="white" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="24" Click="btnPayer_Click" >
+        <Label x:Name="lblListePlats" Grid.Column="2" Content="Liste des plats" Margin="31,27,113,0" VerticalAlignment="Top" Foreground="white" FontSize="16"/>
+        <Button x:Name="btnPayer" Content="Confirmer" Grid.Row="1"  Grid.Column="2" Background="#CC5F8C5A" Margin="120,314,0,0"  BorderThickness="0.5,0.5,1.5,1.5" Foreground="white" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="24" Click="btnPayer_Click" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133" >
             <Button.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
+                    <ScaleTransform ScaleX="-1" ScaleY="-1"/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="180.227"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnHistoriqueCommandes" Content="Historique des Commande" Background="#CC5F8C5A"  Margin="322,0,318,96" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Click="btnHistoriqueCommandes_Click" Height="40" VerticalAlignment="Bottom" Foreground="White">
+        <Button x:Name="btnHistoriqueCommandes" Grid.Row="1" Grid.Column="1" Content="Historique des Commandes" Background="#CC5F8C5A"  Margin="0,0,26,76" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" FontSize="12" Click="btnHistoriqueCommandes_Click" Height="41" VerticalAlignment="Bottom" Foreground="White" HorizontalAlignment="Right" Width="161">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -121,7 +134,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnRetour" Content="Retour page commande" Height="40" Width="128" Background="#FF7DF568" Margin="10,7,662,388" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Visibility="Hidden" Click="btnRetour_Click" >
+        <Button x:Name="btnRetour" Grid.Column="0" Content="Retour page commande" Height="40" Width="128" Background="#FF7DF568" Margin="10,7,662,388" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Visibility="Hidden" Click="btnRetour_Click" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -131,7 +144,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="retour" Content="Retour" Background="#CC5F8C5A" Margin="0,10,694,399"   BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="White" Click="retour_Click">
+        <Button x:Name="retour" Grid.Row="0" Grid.Column="0" Content="Retour" Background="#CC5F8C5A" Margin="8,10,0,37"   BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="White" Click="retour_Click" HorizontalAlignment="Left" Width="89">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

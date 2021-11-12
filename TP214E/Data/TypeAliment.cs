@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TP214E.Data
 {
-    public abstract class TypeAliment
+    public class TypeAliment
     {
         public ObjectId Id { get; set; }
         public string Nom { get; set; }
