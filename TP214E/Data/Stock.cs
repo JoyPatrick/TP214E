@@ -4,13 +4,13 @@ using System.Text;
 
 namespace TP214E.Data
 {
-    public class Stock 
+     class Stock : TypeAliment
     {
         public DateTime ExpireLe { get; set; }
 
-        //public Stock(DateTime expireLe) : base(nom, unite)
-        //{
-        //    ExpireLe = expireLe;
-        //}
+        public Stock(DateTime expireLe) : base(nom, unite)
+        {
+            ExpireLe = expireLe;
+        }
     }
 }

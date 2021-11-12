@@ -22,15 +22,24 @@ namespace TP214E
         // Faire d'envoyer les données dans la BD aux points clés
         private List<TypeAliment> typeAliments;
         private int nbrKitUstensile;
+        private DAL dal2;
         public PageInventaire(DAL dal)
         {
+            dal2 = dal;
             InitializeComponent();
-            typeAliments = dal.ALiments();
-            nbrKitUstensile = dal.NbrKitUstensiles();
+            typeAliments = dal2.ALiments();
+            nbrKitUstensile = dal2.NbrKitUstensiles();
+            Refresh();
+        }
+        public void Refresh()
+        {
+            lstViewInventaireAliment.Items.Clear();
+            lstViewInventaireAutre.Items.Clear();
+            cbTypeAliment.Items.Clear();
             foreach (TypeAliment aliment in typeAliments)
             {
                 lstViewInventaireAliment.Items.Add(aliment);
-                cbTypeAliment.Items.Add("Nom: " + aliment.Nom);
+                cbTypeAliment.Items.Add(aliment);
             }
 
             lstViewInventaireAutre.Items.Add("Nombre kit d'ustensiles: " + nbrKitUstensile);
@@ -42,6 +51,7 @@ namespace TP214E
             {
                 typeAliments.RemoveAt(lstViewInventaireAliment.SelectedIndex);
             }
+            Refresh();
         }
 
         private void btnModifierAliment_Click(object sender, RoutedEventArgs e)
@@ -51,11 +61,14 @@ namespace TP214E
             txtNomAliment.Text = alimentAModifier.Nom;
             txtUniteAliment.Text = alimentAModifier.Unite;
             btnModifierType.IsEnabled = true;
+            Refresh();
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            typeAliments.Add(new TypeAliment(txtNomAliment.Text, txtUniteAliment.Text));
+            TypeAliment unNouvAliment = new TypeAliment(txtNomAliment.Text, txtUniteAliment.Text);
+            typeAliments.Add(unNouvAliment);
+            Refresh();
 
         }
 
@@ -70,6 +83,7 @@ namespace TP214E
 
             lblAjoutModifierUnAliment.Content = "Ajouter un aliment";
             btnModifierType.IsEnabled = false;
+            Refresh();
 
         }
 
@@ -84,7 +98,26 @@ namespace TP214E
                 nbrKitUstensile += 0;
                 throw;
             }
-            
+            Refresh();
+
+        }
+
+        private void retour_Click(object sender, RoutedEventArgs e)
+        {
+            PageAccueil frmAccueil = new PageAccueil();
+
+            this.NavigationService.Navigate(frmAccueil);
+        }
+        private void btnAjouterStock_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (TypeAliment aliment in typeAliments)
+            {
+                if (cbTypeAliment.SelectedItem == aliment)
+                {
+                    aliment.Quantite += Convert.ToInt32(txtNombreStock.Text);
+                }
+            }
+            Refresh();
         }
     }
 }

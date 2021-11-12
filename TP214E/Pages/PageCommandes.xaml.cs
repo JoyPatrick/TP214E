@@ -10,7 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TP214E.Data;
-using TP214E.Pages;
 
 
 namespace TP214E.Pages
@@ -18,23 +17,23 @@ namespace TP214E.Pages
     /// <summary>
     /// Logique d'interaction pour PageCommandes.xaml
     /// </summary>
-    public partial class PageCommandes : Window
+    public partial class PageCommandes : Page
     {
         List<Commandes> lstCommandes = new List<Commandes>();
         Commandes commandeEnCours = new Commandes();
         List<Recette> lstRecettes = new List<Recette>();
         DAL DAL2;
-        public PageCommandes(DAL dal)
+        public PageCommandes()
         {
-            DAL2 = dal;
             InitializeComponent();
+            DAL2 = new DAL();
             lstCommandes = DAL2.getCommandes();
             lstRecettes = DAL2.getRecettes();
             foreach (Recette recette in lstRecettes)
             {
                 lstViewRecettes.Items.Add(recette);
             }
-            lstCommandes = dal.getCommandes();
+            lstCommandes = DAL2.getCommandes();
             foreach (Commandes commandes in lstCommandes)
             {
                 lstViewHistoriqueCommandes.Items.Add(commandes);
@@ -49,7 +48,7 @@ namespace TP214E.Pages
             //Ajout de la commande dans la base de données.
             foreach (Recette recette in commandeEnCours.listRecettes)
             {
-                commandeEnCours.cout += recette.getCout();
+                commandeEnCours.coutCommande += recette.getCout();
                 commandeEnCours.tempsMoyen += recette.getTempsMoyen();
             }
             commandeEnCours.dateCommande = DateTime.Now;
@@ -182,6 +181,18 @@ namespace TP214E.Pages
             {
                 lstViewRecetteDeCommande.Items.Add(recette);
             }
+        }
+
+        private void lstViewRecetteDeCommande_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void retour_Click(object sender, RoutedEventArgs e)
+        {
+            PageAccueil frmAccueil = new PageAccueil();
+
+            this.NavigationService.Navigate(frmAccueil);
         }
     }
 }

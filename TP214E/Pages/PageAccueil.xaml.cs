@@ -20,29 +20,26 @@ namespace TP214E
     /// </summary>
     public partial class PageAccueil : Page
     {
-        private DAL dal;
+        private DAL accesAuxDonner;
         public PageAccueil()
         {
             InitializeComponent();
-            dal = new DAL();
+            accesAuxDonner = new DAL();
         }
 
         private void BoutonInventaire_Click(object sender, RoutedEventArgs e)
         {
-            PageInventaire frmInventaire = new PageInventaire(dal);
+            PageInventaire frmInventaire = new PageInventaire(accesAuxDonner);
 
             this.NavigationService.Navigate(frmInventaire);
 
-            
 
-            
         }
         private void BoutonCommandes_Click(object sender, RoutedEventArgs e)
         {
-            //PageCommandes frmCommande = new PageCommandes(dal);
+            //PageCommandes frmCommande = new PageCommandes(accesAuxDonner);
 
             //this.NavigationService.Navigate(frmCommande);
-            // Erreur?
             this.NavigationService.Navigate(new Uri("Pages/PageCommandes.xaml", UriKind.Relative));
         }
     }

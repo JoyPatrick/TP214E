@@ -13,7 +13,7 @@ namespace TP214E.Data
 
         public DateTime dateRemiseCommande;
 
-        public Decimal cout;
+        public Decimal coutCommande;
 
         public List<Recette> listRecettes = new List<Recette>();
 
@@ -28,12 +28,12 @@ namespace TP214E.Data
         {
         }
 
-        public Commandes(DateTime dateCommande, DateTime dateRemiseCommande, decimal cout,
+        public Commandes(DateTime dateCommande, DateTime dateRemiseCommande, decimal coutCommande,
             List<Recette> listRecettes, int tempsMoyen, Employe employeAttitre, bool kitUstensile)
         {
             this.dateCommande = dateCommande;
             this.dateRemiseCommande = dateRemiseCommande;
-            this.cout = cout;
+            this.coutCommande = coutCommande;
             this.listRecettes = listRecettes;
             this.tempsMoyen = tempsMoyen;
             EmployeAttitre = employeAttitre;
@@ -41,7 +41,7 @@ namespace TP214E.Data
         }
         public override string ToString()
         {
-            string valeurDeRetour = this.dateCommande + " " + this.cout + 
+            string valeurDeRetour = this.dateCommande + " " + this.coutCommande + 
                 " " + this.EmployeAttitre + " " + this.listRecettes.ToString();
             return valeurDeRetour;
         }

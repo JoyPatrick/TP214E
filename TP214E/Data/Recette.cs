@@ -10,17 +10,17 @@ namespace TP214E.Data
 
         private ObjectId Id { get; set; }
 
-        private string nom { get; set; }
+        private string nomRecette { get; set; }
 
-        private string description { get; set; }
+        private string descritpionRecette { get; set; }
 
         private List<TypeAliment> lstTypeAliment { get; set; }
 
-        private int tempsMoyen;
+        private int tempsMoyenRecette;
 
         public int getTempsMoyen()
         {
-            return tempsMoyen;
+            return tempsMoyenRecette;
         }
 
         private decimal cout;
@@ -30,18 +30,18 @@ namespace TP214E.Data
             return cout;
         }
 
-        public Recette(string nom, string description, List<TypeAliment> lstTypeAliment, int tempsMoyen, decimal cout)
+        public Recette(string nomRecette, string descritpionRecette, List<TypeAliment> lstTypeAliment, int tempsMoyenRecette, decimal cout)
         {
-            this.nom = nom;
-            this.description = description;
+            this.nomRecette = nomRecette;
+            this.descritpionRecette = descritpionRecette;
             this.lstTypeAliment = lstTypeAliment;
-            this.tempsMoyen = tempsMoyen;
+            this.tempsMoyenRecette = tempsMoyenRecette;
             this.cout = cout;
         }
 
         public override string ToString()
         {
-            return this.nom + " | " + this.description + ", (" + this.cout + "$)";
+            return this.nomRecette + " | " + this.descritpionRecette + ", (" + this.cout + "$)";
         }
     }
 
