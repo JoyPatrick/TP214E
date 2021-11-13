@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TP214E.Data;
 
 namespace TP214E
@@ -35,11 +27,9 @@ namespace TP214E
         {
             lstViewInventaireAliment.Items.Clear();
             lstViewInventaireAutre.Items.Clear();
-            cbTypeAliment.Items.Clear();
             foreach (TypeAliment aliment in typeAliments)
             {
                 lstViewInventaireAliment.Items.Add(aliment);
-                cbTypeAliment.Items.Add(aliment);
             }
 
             lstViewInventaireAutre.Items.Add("Nombre kit d'ustensiles: " + nbrKitUstensile);
@@ -49,26 +39,58 @@ namespace TP214E
         {
             if (lstViewInventaireAliment.SelectedIndex != -1)
             {
+                dal2.suppressionAliment(typeAliments[lstViewInventaireAliment.SelectedIndex]);
                 typeAliments.RemoveAt(lstViewInventaireAliment.SelectedIndex);
             }
+
             Refresh();
+
         }
 
         private void btnModifierAliment_Click(object sender, RoutedEventArgs e)
         {
             lblAjoutModifierUnAliment.Content = "Modifier un aliment";
-            TypeAliment alimentAModifier = (TypeAliment) lstViewInventaireAliment.SelectedItem;
+            TypeAliment alimentAModifier = (TypeAliment)lstViewInventaireAliment.SelectedItem;
             txtNomAliment.Text = alimentAModifier.Nom;
             txtUniteAliment.Text = alimentAModifier.Unite;
+            txtQuantite.Text = alimentAModifier.Quantite.ToString();
             btnModifierType.IsEnabled = true;
             Refresh();
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            TypeAliment unNouvAliment = new TypeAliment(txtNomAliment.Text, txtUniteAliment.Text);
-            typeAliments.Add(unNouvAliment);
-            Refresh();
+            //try
+            //{
+                TypeAliment unNouvAliment = new TypeAliment(txtNomAliment.Text, txtUniteAliment.Text, Convert.ToInt32(txtQuantite.Text));
+                dal2.insertAliment(unNouvAliment);
+                typeAliments.Add(unNouvAliment);
+                Refresh();
+            //}
+            //catch (System.Exception uneException)
+            //{
+
+            //    MessageBox.Show(uneException.Message, "Erreur");
+            //    switch (uneException.Message)
+            //    {
+            //        case "Le nom de l'aliment est vide":
+            //            txtNomAliment.Focus();
+            //            break;
+            //        case "L'unite de l'aliment est vide":
+            //            txtUniteAliment.Focus();
+            //            break;
+            //        case "La quantite n'est pas supérieur a zéros":
+            //            txtQuantite.Focus();
+            //            break;
+            //        case "Le format entrée est incorrecte":
+            //            txtQuantite.Focus();
+            //            break;
+            //        default:
+            //            break;
+            //    }
+
+            //}
+
 
         }
 
@@ -76,13 +98,15 @@ namespace TP214E
         {
             TypeAliment alimentAModifier = (TypeAliment)lstViewInventaireAliment.SelectedItem;
             lstViewInventaireAliment.Items.Remove(alimentAModifier);
+
             typeAliments.Remove(alimentAModifier);
-            TypeAliment alimentModifie = new TypeAliment(txtNomAliment.Text.Trim(), txtUniteAliment.Text.Trim());
+            TypeAliment alimentModifie = new TypeAliment(txtNomAliment.Text.Trim(), txtUniteAliment.Text.Trim(), Convert.ToInt32(txtQuantite.Text));
 
             typeAliments.Add(alimentModifie);
 
             lblAjoutModifierUnAliment.Content = "Ajouter un aliment";
             btnModifierType.IsEnabled = false;
+            dal2.ModificationAliment(alimentModifie);
             Refresh();
 
         }
@@ -108,16 +132,6 @@ namespace TP214E
 
             this.NavigationService.Navigate(frmAccueil);
         }
-        private void btnAjouterStock_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (TypeAliment aliment in typeAliments)
-            {
-                if (cbTypeAliment.SelectedItem == aliment)
-                {
-                    aliment.Quantite += Convert.ToInt32(txtNombreStock.Text);
-                }
-            }
-            Refresh();
-        }
+
     }
 }

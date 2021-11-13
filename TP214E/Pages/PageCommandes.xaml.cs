@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TP214E.Data;
 
 
@@ -19,99 +12,146 @@ namespace TP214E.Pages
     /// </summary>
     public partial class PageCommandes : Page
     {
-        List<Commandes> lstCommandes = new List<Commandes>();
+        List<Commandes> historiqueCommandes = new List<Commandes>();
+
         Commandes commandeEnCours = new Commandes();
-        List<Recette> lstRecettes = new List<Recette>();
+
+        List<Recette> recettesDansCatalogue = new List<Recette>();
+
+        List<TypeAliment> alimentsDansInventaire = new List<TypeAliment>();
+
         DAL DAL2;
+
         public PageCommandes()
         {
             InitializeComponent();
             DAL2 = new DAL();
-            lstCommandes = DAL2.getCommandes();
-            lstRecettes = DAL2.getRecettes();
-            foreach (Recette recette in lstRecettes)
-            {
-                lstViewRecettes.Items.Add(recette);
-            }
-            lstCommandes = DAL2.getCommandes();
-            foreach (Commandes commandes in lstCommandes)
-            {
-                lstViewHistoriqueCommandes.Items.Add(commandes);
-            }
+            List<TypeAliment> alimentsDansRecette = new List<TypeAliment>();
+            alimentsDansRecette = GenererAlimentDansRecette(alimentsDansRecette);
+
+            historiqueCommandes = DAL2.getHistoriqueCommandes();
+            recettesDansCatalogue = DAL2.getRecettesDansCatalogue();
+
+            GenererRecetteDansCatalogue(alimentsDansRecette);
+
+            Refresh();
 
         }
 
+        private void GenererRecetteDansCatalogue(List<TypeAliment> alimentsDansRecette)
+        {
+            recettesDansCatalogue.Add(new Recette("Spagetthi", "Gros Spag", alimentsDansRecette, 4, 4));
+            recettesDansCatalogue.Add(new Recette("Lasagne", "Grosse lasagne", alimentsDansRecette, 19, 20));
+        }
+
+        private List<TypeAliment> GenererAlimentDansRecette(List<TypeAliment> alimentsDansRecette)
+        {
+            alimentsDansRecette.Add(new TypeAliment("Page", "gramme", 5));
+            alimentsDansRecette.Add(new TypeAliment("Tomate", "gramme", 4));
+            alimentsDansRecette.Add(new TypeAliment("Viande", "gramme", 38));
+            return alimentsDansRecette;
+        }
+
+        public void Refresh()
+        {
+            foreach (Recette recette in recettesDansCatalogue)
+            {
+                lstViewRecettesCatalogue.Items.Add(recette);
+            }
+            historiqueCommandes = DAL2.getHistoriqueCommandes();
+            foreach (Commandes commandes in historiqueCommandes)
+            {
+                lstViewHistoriqueCommandes.Items.Add(commandes);
+            }
+            alimentsDansInventaire = DAL2.ALiments();
+        }
 
 
         private void btnPayer_Click(object sender, RoutedEventArgs e)
         {
             //Ajout de la commande dans la base de données.
-            foreach (Recette recette in commandeEnCours.listRecettes)
+            foreach (Recette recette in commandeEnCours.getRecettesCommande())
             {
-                commandeEnCours.coutCommande += recette.getCout();
-                commandeEnCours.tempsMoyen += recette.getTempsMoyen();
+                commandeEnCours.setCout(recette.getCout());
+                commandeEnCours.setTempsMoyen(recette.getTempsMoyen());
             }
-            commandeEnCours.dateCommande = DateTime.Now;
+            commandeEnCours.setDateCommande(DateTime.Now);
             //À changer 
             // |
             // | 
             // v
-            commandeEnCours.dateRemiseCommande = DateTime.Now;
-            commandeEnCours.EmployeAttitre = null;
+            commandeEnCours.setDateCommandeRemise(DateTime.Now.AddDays(1));
+            RetirerAlimentDeInventaire(commandeEnCours);
+
+
+            DAL2.insertCommande(commandeEnCours);
+
+        }
+        public void RetirerAlimentDeInventaire(Commandes commande)
+        {
+            foreach (Recette recetteDeLaCommande in commande.getRecettesCommande())
+            {
+                foreach (TypeAliment aliment in recetteDeLaCommande.getListAliment())
+                {
+                    for (int i = 0; i < alimentsDansInventaire.Count; i++)
+                    {
+                        if (alimentsDansInventaire[i] == aliment)
+                        {
+                            alimentsDansInventaire[i].Quantite -= aliment.Quantite;
+                        }
+                    }
+                }
+            }
         }
 
         private void btnAjouterKit_Click(object sender, RoutedEventArgs e)
         {
-            if (!commandeEnCours.kitUstensile)
+            if (!commandeEnCours.getBesoinKitUstensile())
             {
-                commandeEnCours.kitUstensile = true;
+                commandeEnCours.setBesoinUstensile(true);
                 btnAjouterKit.Content = "Enlever kit ustensile";
             }
             else
             {
-                commandeEnCours.kitUstensile = false;
+                commandeEnCours.setBesoinUstensile(false);
                 btnAjouterKit.Content = "Ajouter kit ustensile";
             }
         }
 
         private void BtnAjouterCondiments_Click(object sender, RoutedEventArgs e)
         {
-            if (!commandeEnCours.ajoutCondiment)
+            if (!commandeEnCours.getAjoutCondiment())
             {
-                commandeEnCours.ajoutCondiment = true;
+                commandeEnCours.setAjoutCondiment(true);
                 BtnAjouterCondiments.Content = "Enlever condiment";
             }
             else
             {
-                commandeEnCours.ajoutCondiment = false;
+                commandeEnCours.setAjoutCondiment(false);
                 BtnAjouterCondiments.Content = "Ajouter condiment";
             }
         }
 
         private void btnAjouterPlatCommande_Click(object sender, RoutedEventArgs e)
         {
-            lstViewCommandeEnCours.Items.Add(lstViewRecettes.SelectedItem);
-            commandeEnCours.listRecettes.Add((Recette)lstViewRecettes.SelectedItem);
+            lstViewCommandeEnCours.Items.Add(lstViewRecettesCatalogue.SelectedItem);
+            commandeEnCours.getRecettesCommande().Add((Recette)lstViewRecettesCatalogue.SelectedItem);
         }
 
         private void btnSupprimerPlatCommande_Click(object sender, RoutedEventArgs e)
         {
             Recette recetteRetirer = (Recette)lstViewCommandeEnCours.SelectedItem;
             lstViewCommandeEnCours.Items.Remove(recetteRetirer);
-            commandeEnCours.listRecettes.Remove(recetteRetirer);
+            commandeEnCours.getRecettesCommande().Remove(recetteRetirer);
         }
 
         private void btnDupliquerRecette_Click(object sender, RoutedEventArgs e)
         {
             Recette recetteAjout = (Recette)lstViewCommandeEnCours.SelectedItem;
             lstViewCommandeEnCours.Items.Add(recetteAjout);
-            commandeEnCours.listRecettes.Add(recetteAjout);
+            commandeEnCours.getRecettesCommande().Add(recetteAjout);
         }
 
-        private void btnAjouter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnHistoriqueCommandes_Click(object sender, RoutedEventArgs e)
         {
@@ -129,10 +169,6 @@ namespace TP214E.Pages
         public void EnleverPageCommande()
         {
 
-            lblSousTotal.Visibility = Visibility.Hidden;
-            lblTPS.Visibility = Visibility.Hidden;
-            lblTotal.Visibility = Visibility.Hidden;
-            lblTVQ.Visibility = Visibility.Hidden;
             btnAjouterKit.Visibility = Visibility.Hidden;
             BtnAjouterCondiments.Visibility = Visibility.Hidden;
             btnAjouterPlatCommande.Visibility = Visibility.Hidden;
@@ -152,10 +188,6 @@ namespace TP214E.Pages
         private void AfficherPageCommande()
         {
 
-            lblSousTotal.Visibility = Visibility.Visible;
-            lblTPS.Visibility = Visibility.Visible;
-            lblTotal.Visibility = Visibility.Visible;
-            lblTVQ.Visibility = Visibility.Visible;
             btnAjouterKit.Visibility = Visibility.Visible;
             BtnAjouterCondiments.Visibility = Visibility.Visible;
             btnAjouterPlatCommande.Visibility = Visibility.Visible;
@@ -177,16 +209,12 @@ namespace TP214E.Pages
         private void lstViewHistoriqueCommandes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lstViewRecetteDeCommande.Items.Clear();
-            foreach (Recette recette in lstCommandes[lstViewHistoriqueCommandes.SelectedIndex].listRecettes)
+            foreach (Recette recette in historiqueCommandes[lstViewHistoriqueCommandes.SelectedIndex].getRecettesCommande())
             {
                 lstViewRecetteDeCommande.Items.Add(recette);
             }
         }
 
-        private void lstViewRecetteDeCommande_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void retour_Click(object sender, RoutedEventArgs e)
         {

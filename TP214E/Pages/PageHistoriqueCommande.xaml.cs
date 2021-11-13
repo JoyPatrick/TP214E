@@ -26,7 +26,7 @@ namespace TP214E
         {
             InitializeComponent();
             dal2 = dal;
-            lstCommandes = dal.getCommandes();
+            lstCommandes = dal.getHistoriqueCommandes();
             foreach (Commandes commandes in lstCommandes)
             {
                 lstViewHistoriqueCommandes.Items.Add(commandes);
@@ -36,7 +36,7 @@ namespace TP214E
         private void lstViewHistoriqueCommandes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lstViewRecetteDeCommande.Items.Clear();
-            foreach (Recette recette in lstCommandes[lstViewHistoriqueCommandes.SelectedIndex].listRecettes)
+            foreach (Recette recette in lstCommandes[lstViewHistoriqueCommandes.SelectedIndex].getRecettesCommande())
             {
                 lstViewRecetteDeCommande.Items.Add(recette);
             }
