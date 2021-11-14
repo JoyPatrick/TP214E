@@ -3,7 +3,7 @@ using System;
 
 namespace TP214E.Data
 {
-    public class TypeAliment 
+    public class TypeAliment
     {
         public ObjectId Id;
         public string nom;
@@ -33,9 +33,9 @@ namespace TP214E.Data
             {
                 int iQuantite = value;
 
-                if (iQuantite <=0)
+                if (iQuantite <= 0)
                 {
-                    throw new ArgumentException("La Quantité n'est pas supérieur a 0");
+                    throw new ArgumentException("La quantité n'est pas supérieure a 0");
                 }
                 quantite = iQuantite;
             }
@@ -50,26 +50,24 @@ namespace TP214E.Data
 
                 if (strUnite == "")
                 {
-                    throw new ArgumentException("Entre une unite valide");
+                    throw new ArgumentException("Entrez une unité valide");
                 }
                 unite = strUnite;
             }
         }
 
-    public TypeAliment(
-            string nom, string unite, int quantite
-            )
+        public TypeAliment(string pNom, string pUnite, int pQuantite)
         {
             this.Id = ObjectId.GenerateNewId();
-            Nom = nom;
-            Unite = unite;
-            Quantite = quantite;
+            Nom = pNom;
+            Unite = pUnite;
+            Quantite = pQuantite;
         }
 
         public override string ToString()
         {
-            return "Nom:" + this.Nom +
-                    "Quantité:" + this.Quantite +
+            return  this.Nom +
+                    " Qté: " + this.Quantite +
                     " " + this.Unite;
         }
     }

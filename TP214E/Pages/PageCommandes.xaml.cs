@@ -34,7 +34,7 @@ namespace TP214E.Pages
 
             GenererRecetteDansCatalogue(alimentsDansRecette);
 
-            Refresh();
+            RafraichirLesListView();
 
         }
 
@@ -52,13 +52,15 @@ namespace TP214E.Pages
             return alimentsDansRecette;
         }
 
-        public void Refresh()
+        public void RafraichirLesListView()
         {
+            lstViewRecettesCatalogue.Items.Clear();
             foreach (Recette recette in recettesDansCatalogue)
             {
                 lstViewRecettesCatalogue.Items.Add(recette);
             }
             historiqueCommandes = DAL2.getHistoriqueCommandes();
+            lstViewHistoriqueCommandes.Items.Clear();
             foreach (Commandes commandes in historiqueCommandes)
             {
                 lstViewHistoriqueCommandes.Items.Add(commandes);
@@ -69,24 +71,26 @@ namespace TP214E.Pages
 
         private void btnPayer_Click(object sender, RoutedEventArgs e)
         {
-            //Ajout de la commande dans la base de données.
-            foreach (Recette recette in commandeEnCours.getRecettesCommande())
-            {
-                commandeEnCours.setCout(recette.getCout());
-                commandeEnCours.setTempsMoyen(recette.getTempsMoyen());
-            }
             commandeEnCours.setDateCommande(DateTime.Now);
-            //À changer 
-            // |
-            // | 
-            // v
-            commandeEnCours.setDateCommandeRemise(DateTime.Now.AddDays(1));
             RetirerAlimentDeInventaire(commandeEnCours);
-
-
-            DAL2.insertCommande(commandeEnCours);
+            if (commandeEnCours.GenererTempsMoyen(commandeEnCours.getRecettesCommande()) &&
+                commandeEnCours.GenererCoutTotal(commandeEnCours.getRecettesCommande()))
+            {
+                DAL2.insertCommande(commandeEnCours);
+            }
+            ReinitialiserCommande();
 
         }
+
+        private void ReinitialiserCommande()
+        {
+            lstViewCommandeEnCours.Items.Clear();
+            commandeEnCours = new Commandes();
+            btnAjouterKit.Content = "Ajouter kit ustensile";
+            BtnAjouterCondiments.Content = "Ajouter condiment";
+            RafraichirLesListView();
+        }
+
         public void RetirerAlimentDeInventaire(Commandes commande)
         {
             foreach (Recette recetteDeLaCommande in commande.getRecettesCommande())
@@ -134,22 +138,31 @@ namespace TP214E.Pages
 
         private void btnAjouterPlatCommande_Click(object sender, RoutedEventArgs e)
         {
-            lstViewCommandeEnCours.Items.Add(lstViewRecettesCatalogue.SelectedItem);
-            commandeEnCours.getRecettesCommande().Add((Recette)lstViewRecettesCatalogue.SelectedItem);
+            if (lstViewRecettesCatalogue.SelectedIndex != -1)
+            {
+                lstViewCommandeEnCours.Items.Add(lstViewRecettesCatalogue.SelectedItem);
+                commandeEnCours.setRecettes((Recette)lstViewRecettesCatalogue.SelectedItem);
+            }
         }
 
         private void btnSupprimerPlatCommande_Click(object sender, RoutedEventArgs e)
         {
-            Recette recetteRetirer = (Recette)lstViewCommandeEnCours.SelectedItem;
-            lstViewCommandeEnCours.Items.Remove(recetteRetirer);
-            commandeEnCours.getRecettesCommande().Remove(recetteRetirer);
+            if (lstViewCommandeEnCours.SelectedIndex != -1)
+            {
+                Recette recetteRetirer = (Recette)lstViewCommandeEnCours.SelectedItem;
+                lstViewCommandeEnCours.Items.Remove(recetteRetirer);
+                commandeEnCours.getRecettesCommande().Remove(recetteRetirer);
+            }
         }
 
         private void btnDupliquerRecette_Click(object sender, RoutedEventArgs e)
         {
-            Recette recetteAjout = (Recette)lstViewCommandeEnCours.SelectedItem;
-            lstViewCommandeEnCours.Items.Add(recetteAjout);
-            commandeEnCours.getRecettesCommande().Add(recetteAjout);
+            if (lstViewCommandeEnCours.SelectedIndex != -1)
+            {
+                Recette recetteAjout = (Recette)lstViewCommandeEnCours.SelectedItem;
+                lstViewCommandeEnCours.Items.Add(recetteAjout);
+                commandeEnCours.getRecettesCommande().Add(recetteAjout);
+            }
         }
 
 
@@ -163,12 +176,14 @@ namespace TP214E.Pages
         {
             lstViewHistoriqueCommandes.Visibility = Visibility.Visible;
             lstViewRecetteDeCommande.Visibility = Visibility.Visible;
-            lblTitrePage.Content = "Historique de commandes";
+            lblTitrePage.Content = "Historique";
         }
 
         public void EnleverPageCommande()
         {
-
+            lstViewRecettesCatalogue.Visibility = Visibility.Hidden;
+            btnPayer.Visibility = Visibility.Hidden;
+            lstViewCommandeEnCours.Visibility = Visibility.Hidden;
             btnAjouterKit.Visibility = Visibility.Hidden;
             BtnAjouterCondiments.Visibility = Visibility.Hidden;
             btnAjouterPlatCommande.Visibility = Visibility.Hidden;

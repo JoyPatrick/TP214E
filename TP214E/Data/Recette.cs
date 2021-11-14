@@ -86,17 +86,6 @@ namespace TP214E.Data
         }
 
 
-        public int getTempsMoyen()
-        {
-            return tempsMoyenRecette;
-        }
-
-
-        public decimal getCout()
-        {
-            return cout;
-        }
-
         public Recette( string nomRecette, string descritpionRecette, List<TypeAliment> lstTypeAliment, int tempsMoyenRecette, decimal cout)
         {
             this.Id = ObjectId.GenerateNewId();

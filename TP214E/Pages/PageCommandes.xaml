@@ -5,15 +5,15 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:TP214E.Pages"
 mc:Ignorable="d"
-Title="PageCommandes" Height="437" Width="768">
+Title="PageCommandes" Height="450" Width="800">
     <Grid Background="black">
 
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
@@ -23,19 +23,14 @@ Title="PageCommandes" Height="437" Width="768">
 
 
         <Label x:Name="lblTitrePage" Grid.Row="0" Grid.Column="1" Content="Chez victor" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="0,0,0,0" RenderTransformOrigin="0.501,0.5"/>
-        <ListView Grid.Column="0" x:Name="lstViewCommandeEnCours" Margin="0,70,10,112" Grid.RowSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <ListView x:Name="lstViewHistoriqueCommandes" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Grid.Column="0" Height="291" Width="273">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <ListView Grid.Column="0" Grid.Row="1" x:Name="lstViewCommandeEnCours" Margin="0,70,10,112">
+
+        </ListView>
+        <ListView x:Name="lstViewHistoriqueCommandes" SelectionChanged="lstViewHistoriqueCommandes_SelectionChanged" Grid.Column="0" Visibility="Hidden" Margin="8,70,14,38" Grid.RowSpan="2">
+
+        </ListView>
+        <ListView x:Name="lstViewRecetteDeCommande" Grid.Column="2" Margin="0,0,29,38" Visibility="Hidden" Grid.Row="1">
+
         </ListView>
         <Button x:Name="btnAjouterKit" Grid.Row="1" Grid.Column="1" Content="Ajouter kit ustensile" Width="161" Background="#CC5F8C5A" Margin="13,12,0,310" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Click="btnAjouterKit_Click" Foreground="White" HorizontalAlignment="Left">
             <Button.RenderTransform>
@@ -87,23 +82,11 @@ Title="PageCommandes" Height="437" Width="768">
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label x:Name="lblCommandeEnCours" Grid.Column="0" Content="La commande en cours" HorizontalAlignment="Left" Margin="63,38,0,0" Foreground="white" VerticalAlignment="Top" FontSize="16"/>
-        <ListView x:Name="lstViewRecettesCatalogue" Grid.Column="2" Margin="0,0,29,112" HorizontalAlignment="Right" Width="271" RenderTransformOrigin="0.5,0.5" Grid.Row="1">
-           
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <ListView x:Name="lstViewRecetteDeCommande" Height="372" Width="301">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <Label x:Name="lblCommandeEnCours" Grid.Column="0" Grid.Row="1" Content="La commande en cours" HorizontalAlignment="Left" Margin="63,38,0,0" Foreground="white" VerticalAlignment="Top" FontSize="16"/>
+        <ListView x:Name="lstViewRecettesCatalogue" Grid.Column="2" Grid.Row="1" Margin="0,70,10,112" HorizontalAlignment="Right" Width="290" RenderTransformOrigin="0.5,0.5">
+
         </ListView>
-        <Label x:Name="lblListePlats" Grid.Column="2" Content="Liste des plats" Margin="31,27,113,0" VerticalAlignment="Top" Foreground="white" FontSize="16"/>
+        <Label x:Name="lblListePlats" Grid.Column="2" Grid.Row="1" Content="Liste des plats" Margin="72,38,72,0" VerticalAlignment="Top" Foreground="white" FontSize="16"/>
         <Button x:Name="btnPayer" Content="Confirmer" Grid.Row="1" Grid.Column="2" Background="#CC5F8C5A" Margin="120,314,0,0" BorderThickness="0.5,0.5,1.5,1.5" Foreground="white" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" FontSize="24" Click="btnPayer_Click" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="133" >
             <Button.RenderTransform>
                 <TransformGroup>
@@ -131,17 +114,8 @@ Title="PageCommandes" Height="437" Width="768">
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnRetour" Grid.Column="0" Content="Retour page commande" Height="40" Width="128" Background="#FF7DF568" Margin="10,7,662,388" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="#FF8F8F8F" RenderTransformOrigin="0,0" Visibility="Hidden" Click="btnRetour_Click" >
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Button x:Name="retour" Grid.Row="0" Grid.Column="0" Content="Retour" Background="#CC5F8C5A" Margin="8,10,0,37" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="White" Click="retour_Click" HorizontalAlignment="Left" Width="89">
+
+        <Button x:Name="retour" Content="Retour" Background="#0000ffff" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="#FF5F8C5A" Click="retour_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" Margin="10,10,0,0" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

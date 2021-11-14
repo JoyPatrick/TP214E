@@ -10,49 +10,38 @@ Title="Inventaire">
 
 
 
-    <Grid ShowGridLines="True" Background="black">
+    <Grid Background="black" VerticalAlignment="Stretch">
 
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ListView x:Name="lstViewInventaireAliment" Grid.Row="1" Grid.Column="1" Margin="16,85,16,28" RenderTransformOrigin="0.5,0.5">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
         </ListView>
-        <Button x:Name="btnAjouter" Grid.Row="1" Grid.Column="2" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="0,158,150,177" Click="btnAjouter_Click" HorizontalAlignment="Right" />
-        <Button x:Name="btnModifierAliment" Grid.Row="1" Grid.Column="2" Content="Aliment à modifier" Height="40" Width="128" Background="White" Margin="0,203,150,132" Click="btnModifierAliment_Click" HorizontalAlignment="Right" />
-        <Button x:Name="btnSupprimerAliment" Grid.Row="1" Grid.Column="2" Content="Supprimer aliment" Height="40" Width="128" Background="White" Margin="0,296,150,39" Click="btnSupprimerAliment_Click" HorizontalAlignment="Right" />
-        <Label Content="Ajout d'un stock" HorizontalAlignment="Left" Margin="629,105,0,0" VerticalAlignment="Top" FontSize="16" Foreground="white"/>
-        <Label x:Name="lblAjoutModifierUnAliment" Content="Ajout d'un aliment" HorizontalAlignment="Left" Margin="461,105,0,0" VerticalAlignment="Top" FontSize="16" Foreground="white"/>
-        <TextBox x:Name="txtNomAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,30,12,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtUniteAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,76,12,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnModifierType" Grid.Row="1" Grid.Column="2" Content="Modifier un aliment" Height="40" Width="128" Background="White" Margin="0,248,150,87" IsEnabled="False" Click="btnModifierType_Click" HorizontalAlignment="Right" />
-        <Label Content="Aliment" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="111,26,0,0" VerticalAlignment="Top" Foreground="white"/>
+        <Button x:Name="btnAjouter" Grid.Row="1" Grid.Column="2" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="0,105,150,230" Click="btnAjouter_Click" HorizontalAlignment="Right" />
+        <Button x:Name="btnModifierAliment" Grid.Row="1" Grid.Column="2" Content="Aliment à modifier" Height="40" Width="128" Background="White" Margin="0,150,150,185" Click="btnModifierAliment_Click" HorizontalAlignment="Right" />
+        <Button x:Name="btnSupprimerAliment" Grid.Row="1" Grid.Column="2" Content="Supprimer aliment" Height="40" Width="128" Background="White" Margin="0,243,150,92" Click="btnSupprimerAliment_Click" HorizontalAlignment="Right" />
+        <TextBox x:Name="txtNomAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,25,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtUniteAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,71,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnModifierType" Grid.Row="1" Grid.Column="2" Content="Modifier un aliment" Height="40" Width="128" Background="White" Margin="0,195,150,140" IsEnabled="False" Click="btnModifierType_Click" HorizontalAlignment="Right" />
+        <Label Content="Aliment" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="110,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18"/>
         <ListView Grid.Row="1" x:Name="lstViewInventaireAutre" Margin="10,87,10,24">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+
         </ListView>
-        <Label Content="Autre" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="86,26,0,0" VerticalAlignment="Top" Foreground="white"/>
-        <TextBox x:Name="txtNombreUstensile" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,268,10,0" Text="Nombre kit " TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="20">
+        <Label Content="Autre" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="85,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18"/>
+        <TextBox x:Name="txtNombreUstensile" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,130,98,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20">
             <TextBox.Style>
                 <Style/>
             </TextBox.Style>
         </TextBox>
-        <Button x:Name="btnAjouterUsentile" Grid.Row="1" Grid.Column="2" Content="Ajouter Kit" Background="White" Margin="0,301,13,40" Click="btnAjouterUsentile_Click" HorizontalAlignment="Right" Width="126" RenderTransformOrigin="0.5,0.5" >
+        <Button x:Name="btnAjouterUsentile" Grid.Row="1" Grid.Column="2" Content="Ajouter Kit(s)" Background="White" Margin="0,123,3,218" Click="btnAjouterUsentile_Click" HorizontalAlignment="Right" Width="88" RenderTransformOrigin="0.5,0.5" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1" ScaleY="-1"/>
@@ -63,7 +52,7 @@ Title="Inventaire">
             </Button.RenderTransform>
         </Button>
         <Label Grid.Row="0" Grid.Column="1" x:Name="lblTitrePage" Content="Inventaire" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="0,0,16,0" Height="53" Width="205"/>
-        <Button x:Name="retour" Grid.Row="0" Grid.Column="0" Content="Retour" Background="#CC5F8C5A" Margin="0,0,175,37" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="White" Click="retour_Click" Height="28" VerticalAlignment="Bottom">
+        <Button x:Name="retour" Content="Retour" Background="#0000ffff" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="#FF5F8C5A" Click="retour_Click" Height="75" VerticalAlignment="Center" HorizontalAlignment="Center" Width="267" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -73,10 +62,10 @@ Title="Inventaire">
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="txtQuantite" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,53,12,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Quantité :" Foreground="white" Grid.Column="2" Margin="90,46,90,297" Grid.Row="1"/>
-        <Label Content="Nom de l'aliment:" Foreground="white" Grid.Column="2" Margin="48,26,132,317" Grid.Row="1"/>
-        <Label Content="Unité(kl,gr) :" Foreground="white" Grid.Column="2" Margin="73,69,150,272" Grid.Row="1"/>
+        <TextBox x:Name="txtQuantite" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,48,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Quantité :" Foreground="white" Grid.Column="2" Margin="72,41,155,302" Grid.Row="1"/>
+        <Label Content="Nom de l'aliment:" Foreground="white" Grid.Column="2" Margin="30,21,150,322" Grid.Row="1"/>
+        <Label Content="Unité(kl,gr) :" Foreground="white" Grid.Column="2" Margin="55,64,168,277" Grid.Row="1"/>
 
 
 

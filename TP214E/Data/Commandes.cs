@@ -6,7 +6,7 @@ namespace TP214E.Data
 {
     public class Commandes
     {
-        private ObjectId Id { get; set; }
+        private ObjectId Id;
 
         private DateTime dateCommande;
 
@@ -73,9 +73,9 @@ namespace TP214E.Data
         {
             coutCommande += cout;
         }
-        public void setRecettes(List<Recette> recettes)
+        public void setRecettes(Recette recettes)
         {
-            listRecettes = recettes;
+            listRecettes.Add(recettes);
         }
         public void setTempsMoyen(int temps)
         {
@@ -95,6 +95,34 @@ namespace TP214E.Data
 
         public Commandes()
         {
+            this.Id = ObjectId.GenerateNewId();
+            ajoutCondiment = false;
+            besoinKitUsentile = false;
+        }
+        public bool GenererTempsMoyen(List<Recette> recettes)
+        {
+            if (recettes.Count != 0)
+            {
+                foreach (Recette recette in recettes)
+                {
+                    this.tempsMoyen += recette.TempsMoyenRecette;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public bool GenererCoutTotal(List<Recette> recettes)
+        {
+            if (recettes.Count != 0)
+            {
+                foreach (Recette recette in listRecettes)
+                {
+                    this.coutCommande += recette.Cout;
+                }
+                return true;
+            }
+            return false;
         }
 
         public Commandes(DateTime dateCommande, DateTime dateRemiseCommande, decimal coutCommande,
@@ -110,9 +138,8 @@ namespace TP214E.Data
         }
         public override string ToString()
         {
-            string valeurDeRetour = this.dateCommande + " " + this.coutCommande
-                 + " " + this.listRecettes.ToString();
-            return valeurDeRetour;
+            return this.dateCommande + " | " + this.coutCommande
+                 + " | " + this.tempsMoyen;
         }
     }
 }

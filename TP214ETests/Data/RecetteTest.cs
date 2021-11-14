@@ -133,6 +133,69 @@ namespace TP214E.Data.Tests
             }
 
         }
+        [TestMethod()]
+        public void TestAccesseurSetNomAvecParametreValide()
+        {
+            Recette uneRecette;
+            List<TypeAliment> alimentsDansRecette = new List<TypeAliment>();
+
+
+
+            alimentsDansRecette.Add(new TypeAliment("Page", "gramme", 5));
+            uneRecette = new Recette("Spagetthi", "Gros Spag", alimentsDansRecette, 4, 4);
+
+
+
+            uneRecette.NomRecette = "Laitue";
+
+
+
+            Assert.AreEqual("Laitue", uneRecette.NomRecette);
+            Assert.AreEqual("Gros Spag", uneRecette.DescritpionRecette);
+            Assert.AreEqual(4, uneRecette.TempsMoyenRecette);
+            Assert.AreEqual(4, uneRecette.Cout);
+
+
+
+        }
+        [TestMethod()]
+        public void TestAccesseurTempsRecetteAvecParametreInvalide()
+        {
+            Recette uneRecette;
+            List<TypeAliment> alimentsDansRecette = new List<TypeAliment>();
+
+
+
+            alimentsDansRecette.Add(new TypeAliment("Page", "gramme", 5));
+            uneRecette = new Recette("Spagetthi", "Gros Spag", alimentsDansRecette, 4, 4);
+
+
+
+
+            try
+            {
+                uneRecette.TempsMoyenRecette = 0;
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(4, uneRecette.TempsMoyenRecette);
+                Assert.AreEqual("Le temps de preparation doit être supérieur a 0", ex.Message);
+            }
+
+
+
+            try
+            {
+                uneRecette.TempsMoyenRecette = -1;
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(4, uneRecette.TempsMoyenRecette);
+                Assert.AreEqual("Le temps de preparation doit être supérieur a 0", ex.Message);
+            }
+        }
 
 
     }

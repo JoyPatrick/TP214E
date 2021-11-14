@@ -92,12 +92,69 @@ namespace TP214E.Data.Tests
             string strUnite = "kl";
             TypeAliment unAliment = new TypeAliment(strNomAliment, strUnite,20);
 
-            Assert.AreEqual(string.Format("Nom:" +strNomAliment+ "Quantité:"+20+" "+ strUnite), unAliment.ToString());
+            Assert.AreEqual(string.Format(strNomAliment+ " Qté: " + 20 + " " + strUnite), unAliment.ToString());
 
 
+        }
+        public void TestAccesseurSetUniteAvecParametreValide()
+        {
+            TypeAliment unAliment;
+
+            unAliment = new TypeAliment("tomates", "kl", 20);
+
+            unAliment.Unite = "gr";
+            Assert.AreEqual("tomates", unAliment.Nom);
+            Assert.AreEqual("gr", unAliment.Unite);
+            Assert.AreEqual(20, unAliment.Quantite);
         }
 
 
 
+
+        [TestMethod()]
+        public void TestAccesseurSetQuantiteAvecParametreValide()
+        {
+            TypeAliment unAliment;
+
+            unAliment = new TypeAliment("tomates", "kl", 20);
+
+            unAliment.Quantite = 50;
+
+            Assert.AreEqual("tomates", unAliment.Nom);
+            Assert.AreEqual("kl", unAliment.Unite);
+            Assert.AreEqual(50, unAliment.Quantite);
+        }
+
+
+
+        [TestMethod()]
+        public void TestAccesseurSetQuantiteAvecPametreInvalide()
+        {
+            TypeAliment unAliment;
+
+            unAliment = new TypeAliment("tomates", "kl", 20);
+
+            try
+            {
+                unAliment.Quantite = 0;
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(20, unAliment.quantite);
+                Assert.AreEqual("La Quantité n'est pas supérieur a 0", ex.Message);
+            }
+
+            try
+            {
+                unAliment.Quantite = -1;
+                Assert.Fail();
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(20, unAliment.quantite);
+                Assert.AreEqual("La Quantité n'est pas supérieur a 0", ex.Message);
+            }
+        }
     }
 }
