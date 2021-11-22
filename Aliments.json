@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "619ba1abbe53621c4801bb20"
+  },
+  "nom": "Tomates",
+  "quantite": 5,
+  "unite": "unité",
+  "Nom": "Tomates",
+  "Quantite": 5,
+  "Unite": "unité"
+},{
+  "_id": {
+    "$oid": "619ba1bfbe53621c4801bb21"
+  },
+  "nom": "Pates",
+  "quantite": 4000,
+  "unite": "g",
+  "Nom": "Pates",
+  "Quantite": 4000,
+  "Unite": "g"
+},{
+  "_id": {
+    "$oid": "619ba1d8be53621c4801bb22"
+  },
+  "nom": "Patates",
+  "quantite": 12000,
+  "unite": "g",
+  "Nom": "Patates",
+  "Quantite": 12000,
+  "Unite": "g"
+},{
+  "_id": {
+    "$oid": "619ba1f9be53621c4801bb23"
+  },
+  "nom": "Tomates",
+  "quantite": 6000,
+  "unite": "g",
+  "Nom": "Tomates",
+  "Quantite": 6000,
+  "Unite": "g"
+},{
+  "_id": {
+    "$oid": "619ba237be53621c4801bb24"
+  },
+  "nom": "Saucisse",
+  "quantite": 120,
+  "unite": "unite",
+  "Nom": "Saucisse",
+  "Quantite": 120,
+  "Unite": "unite"
+},{
+  "_id": {
+    "$oid": "619ba274be53621c4801bb25"
+  },
+  "nom": "Onion",
+  "quantite": 4000,
+  "unite": "g",
+  "Nom": "Onion",
+  "Quantite": 4000,
+  "Unite": "g"
+},{
+  "_id": {
+    "$oid": "619ba29abe53621c4801bb26"
+  },
+  "nom": "Sauces",
+  "quantite": 7000,
+  "unite": "ml",
+  "Nom": "Sauces",
+  "Quantite": 7000,
+  "Unite": "ml"
+}]
