@@ -25,6 +25,12 @@ namespace TP214E.Data
             IMongoCollection<Commandes> uneCommande = db.GetCollection<Commandes>("Commandes");
             uneCommande.InsertOne(commandesInserer);
         }
+        public void insertRecette(Recette recetteInserer)
+        {
+            IMongoDatabase db = mongoDBClient.GetDatabase("TP2DB");
+            IMongoCollection<Recette> uneRecette = db.GetCollection<Recette>("Recettes");
+            uneRecette.InsertOne(recetteInserer);
+        }
         public void ModificationAliment(TypeAliment alimentsModifier)
         {
             suppressionAliment(alimentsModifier);

@@ -96,6 +96,7 @@ namespace TP214E.Data
         public Commandes()
         {
             this.Id = ObjectId.GenerateNewId();
+            dateCommande = DateTime.Now;
             ajoutCondiment = false;
             besoinKitUsentile = false;
         }

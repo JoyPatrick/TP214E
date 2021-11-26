@@ -6,9 +6,9 @@ namespace TP214E.Data
     public class TypeAliment
     {
         public ObjectId Id;
-        public string nom;
-        public int quantite;
-        public string unite;
+        private string nom;
+        private int quantite;
+        private string unite;
 
 
         public string Nom
@@ -16,13 +16,11 @@ namespace TP214E.Data
             get { return nom; }
             set
             {
-                string strNom = value;
-
-                if (strNom == "")
+                if (value == "")
                 {
                     throw new ArgumentException("Le nom de l'aliment est vide");
                 }
-                nom = strNom;
+                nom = value;
             }
         }
 
@@ -59,8 +57,8 @@ namespace TP214E.Data
         public TypeAliment(string pNom, string pUnite, int pQuantite)
         {
             this.Id = ObjectId.GenerateNewId();
-            Nom = pNom;
             Unite = pUnite;
+            Nom = pNom;
             Quantite = pQuantite;
         }
 

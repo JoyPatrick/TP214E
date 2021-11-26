@@ -141,7 +141,7 @@ namespace TP214E.Data.Tests
             }
             catch (ArgumentException ex)
             {
-                Assert.AreEqual(20, unAliment.quantite);
+                Assert.AreEqual(20, unAliment.Quantite);
                 Assert.AreEqual("La Quantité n'est pas supérieur a 0", ex.Message);
             }
 
@@ -152,7 +152,7 @@ namespace TP214E.Data.Tests
             }
             catch (ArgumentException ex)
             {
-                Assert.AreEqual(20, unAliment.quantite);
+                Assert.AreEqual(20, unAliment.Quantite);
                 Assert.AreEqual("La Quantité n'est pas supérieur a 0", ex.Message);
             }
         }

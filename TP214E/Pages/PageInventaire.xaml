@@ -23,25 +23,25 @@ Title="Inventaire">
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="lstViewInventaireAliment" Grid.Row="1" Grid.Column="1" Margin="16,85,16,28" RenderTransformOrigin="0.5,0.5">
+        <ListView x:Name="lstViewInventaireAliment" Grid.Row="1" Grid.Column="1" Margin="16,85,16,28" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Panel.ZIndex="2">
         </ListView>
-        <Button x:Name="btnAjouter" Grid.Row="1" Grid.Column="2" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="0,105,150,230" Click="btnAjouter_Click" HorizontalAlignment="Right" />
-        <Button x:Name="btnModifierAliment" Grid.Row="1" Grid.Column="2" Content="Aliment à modifier" Height="40" Width="128" Background="White" Margin="0,150,150,185" Click="btnModifierAliment_Click" HorizontalAlignment="Right" />
-        <Button x:Name="btnSupprimerAliment" Grid.Row="1" Grid.Column="2" Content="Supprimer aliment" Height="40" Width="128" Background="White" Margin="0,243,150,92" Click="btnSupprimerAliment_Click" HorizontalAlignment="Right" />
-        <TextBox x:Name="txtNomAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,25,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtUniteAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,71,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnModifierType" Grid.Row="1" Grid.Column="2" Content="Modifier un aliment" Height="40" Width="128" Background="White" Margin="0,195,150,140" IsEnabled="False" Click="btnModifierType_Click" HorizontalAlignment="Right" />
-        <Label Content="Aliment" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="110,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18"/>
-        <ListView Grid.Row="1" x:Name="lstViewInventaireAutre" Margin="10,87,10,24">
+        <Button x:Name="btnAjouter" Grid.Row="1" Grid.Column="2" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="0,105,150,230" Click="btnAjouter_Click" HorizontalAlignment="Right" Visibility="Visible" />
+        <Button x:Name="btnModifierAliment" Grid.Row="1" Grid.Column="2" Content="Aliment à modifier" Height="40" Width="128" Background="White" Margin="0,150,150,185" Click="btnModifierAliment_Click" HorizontalAlignment="Right" Visibility="Visible" />
+        <Button x:Name="btnSupprimerAliment" Grid.Row="1" Grid.Column="2" Content="Supprimer aliment" Height="40" Width="128" Background="White" Margin="0,243,150,92" Click="btnSupprimerAliment_Click" HorizontalAlignment="Right" Visibility="Visible" />
+        <TextBox x:Name="txtNomAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,25,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible"/>
+        <TextBox x:Name="txtUniteAliment" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,71,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible"/>
+        <Button x:Name="btnModifierType" Grid.Row="1" Grid.Column="2" Content="Modifier un aliment" Height="40" Width="128" Background="White" Margin="0,195,150,140" IsEnabled="False" Click="btnModifierType_Click" HorizontalAlignment="Right" Visibility="Visible" />
+        <Label x:Name="lblAliment" Content="Aliment" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="110,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18" Visibility="Visible"/>
+        <ListView Grid.Row="1" x:Name="lstViewInventaireAutre" Margin="10,87,10,24" Visibility="Visible" Panel.ZIndex="2">
 
         </ListView>
-        <Label Content="Autre" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="85,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18"/>
-        <TextBox x:Name="txtNombreUstensile" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,130,98,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20">
+        <Label x:Name="lblAutre" Content="Autre" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Margin="85,37,0,0" VerticalAlignment="Top" Foreground="white" FontSize="18" Visibility="Visible"/>
+        <TextBox x:Name="txtNombreUstensile" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,130,98,0" Text="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" Height="20" Visibility="Visible">
             <TextBox.Style>
                 <Style/>
             </TextBox.Style>
         </TextBox>
-        <Button x:Name="btnAjouterUsentile" Grid.Row="1" Grid.Column="2" Content="Ajouter Kit(s)" Background="White" Margin="0,123,3,218" Click="btnAjouterUsentile_Click" HorizontalAlignment="Right" Width="88" RenderTransformOrigin="0.5,0.5" >
+        <Button x:Name="btnAjouterUsentile" Grid.Row="1" Grid.Column="2" Content="Ajouter Kit(s)" Background="White" Margin="0,123,3,218" Click="btnAjouterUsentile_Click" HorizontalAlignment="Right" Width="88" RenderTransformOrigin="0.5,0.5" Visibility="Visible" >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1" ScaleY="-1"/>
@@ -51,7 +51,7 @@ Title="Inventaire">
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Grid.Row="0" Grid.Column="1" x:Name="lblTitrePage" Content="Inventaire" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="0,0,16,0" Height="53" Width="205"/>
+        <Label Grid.Row="0" Grid.Column="1" x:Name="lblTitrePage" Content="Inventaire" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="#FF5F8C5A" FontSize="36" Margin="0,0,16,0" Height="53" Width="205" Visibility="Visible"/>
         <Button x:Name="retour" Content="Retour" Background="#0000ffff" BorderThickness="0.5,0.5,1.5,1.5" BorderBrush="White" RenderTransformOrigin="0,0" Foreground="#FF5F8C5A" Click="retour_Click" Height="75" VerticalAlignment="Center" HorizontalAlignment="Center" Width="267" >
             <Button.RenderTransform>
                 <TransformGroup>
@@ -62,13 +62,19 @@ Title="Inventaire">
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="txtQuantite" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,48,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Quantité :" Foreground="white" Grid.Column="2" Margin="72,41,155,302" Grid.Row="1"/>
-        <Label Content="Nom de l'aliment:" Foreground="white" Grid.Column="2" Margin="30,21,150,322" Grid.Row="1"/>
-        <Label Content="Unité(kl,gr) :" Foreground="white" Grid.Column="2" Margin="55,64,168,277" Grid.Row="1"/>
-
-
-
+        <TextBox x:Name="txtQuantite" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,48,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Visible"/>
+        <Label x:Name="lblQte" Content="Quantité :" Foreground="white" Grid.Column="2" Margin="72,41,155,302" Grid.Row="1" Visibility="Visible"/>
+        <Label x:Name="lblNomAliment" Content="Nom de l'aliment:" Foreground="white" Grid.Column="2" Margin="30,21,150,322" Grid.Row="1" Visibility="Visible"/>
+        <Label x:Name="lblUnite" Content="Unité(kl,gr) :" Foreground="white" Grid.Column="2" Margin="55,64,168,277" Grid.Row="1" Visibility="Visible"/>
+        <Button x:Name="btnAfficherCreationRecette" Grid.Row="1" Grid.Column="1" Content="Créer une recette" Height="40" Width="117" Background="White" Margin="0,295,150,40" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="btnAfficherCreationRecette_Click" Visibility="Visible" />
+        <TextBox x:Name="txtNomRecette" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="137,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>
+        <TextBox x:Name="txtDescription" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="137,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox x:Name="txtTempsMoyen" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="137,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox x:Name="txtCout" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="137,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Button x:Name="btnCreationRecetteDansBD" Grid.Row="1" Grid.Column="2" Content="Création de la recette" Height="40" Width="117" Background="White" Margin="0,326,11,9" HorizontalAlignment="Right" Visibility="Visible" Click="btnCreationRecetteDansBD_Click"/>
+        <ListView x:Name="lstViewAlimentAjoutRecette" Margin="9,87,10,24" Visibility="Visible" Grid.Row="1"/>
+        <ListView x:Name="lstViewAlimentDansRecette" Grid.Row="1" Margin="10,87,22,26" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Grid.Column="1"/>
+        <Button x:Name="btnAjouterRecette" Grid.Row="1" Content="Ajouter un aliment" Height="40" Width="128" Background="White" Margin="0,32,198,303" HorizontalAlignment="Right" Visibility="Hidden" Grid.ColumnSpan="2" Click="btnAjouterAlimentDansRecette_Click" />
 
     </Grid>
 </Page>

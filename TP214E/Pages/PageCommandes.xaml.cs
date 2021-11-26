@@ -26,31 +26,36 @@ namespace TP214E.Pages
         {
             InitializeComponent();
             DAL2 = new DAL();
-            List<TypeAliment> alimentsDansRecette = new List<TypeAliment>();
-            alimentsDansRecette = GenererAlimentDansRecette(alimentsDansRecette);
+            //List<TypeAliment> alimentsDansRecette = new List<TypeAliment>();
+            //alimentsDansRecette = GenererAlimentDansRecette(alimentsDansRecette);
 
             historiqueCommandes = DAL2.getHistoriqueCommandes();
             recettesDansCatalogue = DAL2.getRecettesDansCatalogue();
 
-            GenererRecetteDansCatalogue(alimentsDansRecette);
+            //GenererRecetteDansCatalogue(alimentsDansRecette);
 
             RafraichirLesListView();
 
         }
 
-        private void GenererRecetteDansCatalogue(List<TypeAliment> alimentsDansRecette)
-        {
-            recettesDansCatalogue.Add(new Recette("Spagetthi", "Gros Spag", alimentsDansRecette, 4, 4));
-            recettesDansCatalogue.Add(new Recette("Lasagne", "Grosse lasagne", alimentsDansRecette, 19, 20));
-        }
+        //private void GenererRecetteDansCatalogue(List<TypeAliment> alimentsDansRecette)
+        //{
+        //    List<(TypeAliment, int)> tupleAlimentDansRecette = new List<(TypeAliment, int)>();
+        //    foreach (TypeAliment item in alimentsDansRecette)
+        //    {
+        //        tupleAlimentDansRecette.Add((item, 1));
+        //    }
+        //    recettesDansCatalogue.Add(new Recette("Spagetthi", "Gros Spag", tupleAlimentDansRecette, 4, 4));
+        //    recettesDansCatalogue.Add(new Recette("Lasagne", "Grosse lasagne", tupleAlimentDansRecette, 19, 20));
+        //}
 
-        private List<TypeAliment> GenererAlimentDansRecette(List<TypeAliment> alimentsDansRecette)
-        {
-            alimentsDansRecette.Add(new TypeAliment("Page", "gramme", 5));
-            alimentsDansRecette.Add(new TypeAliment("Tomate", "gramme", 4));
-            alimentsDansRecette.Add(new TypeAliment("Viande", "gramme", 38));
-            return alimentsDansRecette;
-        }
+        //private List<TypeAliment> GenererAlimentDansRecette(List<TypeAliment> alimentsDansRecette)
+        //{
+        //    alimentsDansRecette.Add(new TypeAliment("Page", "gramme", 5));
+        //    alimentsDansRecette.Add(new TypeAliment("Tomate", "gramme", 4));
+        //    alimentsDansRecette.Add(new TypeAliment("Viande", "gramme", 38));
+        //    return alimentsDansRecette;
+        //}
 
         public void RafraichirLesListView()
         {
@@ -77,6 +82,10 @@ namespace TP214E.Pages
                 commandeEnCours.GenererCoutTotal(commandeEnCours.getRecettesCommande()))
             {
                 DAL2.insertCommande(commandeEnCours);
+                string text = "Vous avez créer une commande de " + commandeEnCours.getRecettesCommande().Count + " plats.\n"
+                    + "Pour un total de " + (commandeEnCours.getCoutCommande() * 1,15) + " (taxes incluses).\n"
+                    + "La commande prendra environ" + commandeEnCours.getTempsMoyen() + " minute(s) à être préparé.";
+                MessageBox.Show(text);
             }
             ReinitialiserCommande();
 
@@ -95,13 +104,18 @@ namespace TP214E.Pages
         {
             foreach (Recette recetteDeLaCommande in commande.getRecettesCommande())
             {
-                foreach (TypeAliment aliment in recetteDeLaCommande.getListAliment())
+                List<TypeAliment> alimentDansRecette = new List<TypeAliment>();
+                for (int i = 0; i < recetteDeLaCommande.getListAliment().Count; i++)
+                {
+                    alimentDansRecette.Add(recetteDeLaCommande.getListAliment()[i].Item1);
+                }
+                foreach ((TypeAliment, int) aliment in recetteDeLaCommande.getListAliment())
                 {
                     for (int i = 0; i < alimentsDansInventaire.Count; i++)
                     {
-                        if (alimentsDansInventaire[i] == aliment)
+                        if (alimentsDansInventaire[i] == aliment.Item1)
                         {
-                            alimentsDansInventaire[i].Quantite -= aliment.Quantite;
+                            alimentsDansInventaire[i].Quantite -= aliment.Item2;
                         }
                     }
                 }

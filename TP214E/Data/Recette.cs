@@ -5,16 +5,28 @@ using System.Text;
 
 namespace TP214E.Data
 {
+    public enum CategorieDeRecette
+    {
+        Burger,
+        Poutine,
+        Pizza,
+        Salade
+    }
+
+
     public class Recette
     {
 
         private ObjectId Id { get; set; }
 
+
+
         private string nomRecette;
 
-        private string descritpionRecette;
+        private string descriptionRecette;
 
-        private List<TypeAliment> lstTypeAliment { get; set; }
+        private CategorieDeRecette categorieRecette;
+        private List<(TypeAliment, int)> lstTypeAliment;
 
         private int tempsMoyenRecette;
 
@@ -35,9 +47,10 @@ namespace TP214E.Data
                 nomRecette = strNomRecette;
             }
         }
-        public string DescritpionRecette
+
+        public string DescriptionRecette
         {
-            get { return descritpionRecette; }
+            get { return descriptionRecette; }
             set
             {
                 string strDescritpionRecette = value;
@@ -46,7 +59,21 @@ namespace TP214E.Data
                 {
                     throw new ArgumentException("La description de la recette est vide");
                 }
-                descritpionRecette = strDescritpionRecette;
+                descriptionRecette = strDescritpionRecette;
+            }
+        }
+        public List<(TypeAliment, int)> ListeTypeAliments
+        {
+            get { return lstTypeAliment; }
+            set
+            {
+                List<(TypeAliment, int)> listeTypeAliments = value;
+
+                if (listeTypeAliments.Count == 0)
+                {
+                    throw new ArgumentException("Le nom de la recette est vide");
+                }
+                lstTypeAliment = listeTypeAliments;
             }
         }
 
@@ -80,26 +107,25 @@ namespace TP214E.Data
             }
         }
 
-        public List<TypeAliment> getListAliment()
+        public List<(TypeAliment, int)> getListAliment()
         {
-            return lstTypeAliment;
+            return ListeTypeAliments;
         }
 
 
-        public Recette( string nomRecette, string descritpionRecette, List<TypeAliment> lstTypeAliment, int tempsMoyenRecette, decimal cout)
+        public Recette(string nomRecette, string descriptionRecette, List<(TypeAliment, int)> lstTypeAliment, int tempsMoyenRecette, decimal cout)
         {
             this.Id = ObjectId.GenerateNewId();
             NomRecette = nomRecette;
-            DescritpionRecette = descritpionRecette;
-            this.lstTypeAliment = lstTypeAliment;
+            DescriptionRecette = descriptionRecette;
+            ListeTypeAliments = lstTypeAliment;
             TempsMoyenRecette = tempsMoyenRecette;
             Cout = cout;
         }
 
         public override string ToString()
         {
-            return this.nomRecette + " | " + this.descritpionRecette + ", (" + this.cout + "$)";
+            return this.NomRecette + " | " + this.DescriptionRecette + ", (" + this.Cout + "$)";
         }
     }
-
 }
