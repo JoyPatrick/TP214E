@@ -1,0 +1,258 @@
+[{
+  "_id": {
+    "$oid": "61bca76bf919fff3fdb43bcb"
+  },
+  "DateCommande": {
+    "$date": "2021-12-17T15:06:19.656Z"
+  },
+  "CoutCommande": "40",
+  "ListRecettes": [
+    {
+      "QuantiteDispo": 4,
+      "AffichageMenuIngredient": "Tomates: 30 Gr\nChocolat: 35 Gr\nBoeuf Haché: 125 Gr\nCuisse Poulet: 5 Unité\nPatates: 75 Gr\n",
+      "CategorieRecette": 5,
+      "LstQuantiteDeAliment": [
+        30,
+        35,
+        125,
+        5,
+        75
+      ],
+      "LstTypeAliment": [
+        {
+          "_id": {
+            "$oid": "61bca1c64e393dc048ae17f6"
+          },
+          "Nom": "Tomates",
+          "Quantite": 1000,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1d94e393dc048ae17f7"
+          },
+          "Nom": "Chocolat",
+          "Quantite": 1300,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca2154e393dc048ae17fa"
+          },
+          "Nom": "Boeuf Haché",
+          "Quantite": 20000,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca2244e393dc048ae17fb"
+          },
+          "Nom": "Cuisse Poulet",
+          "Quantite": 200,
+          "Unite": "Unité"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1534e393dc048ae17f1"
+          },
+          "Nom": "Patates",
+          "Quantite": 400,
+          "Unite": "Gr"
+        }
+      ],
+      "NomRecette": "MixBouff",
+      "DescritpionRecette": "Surprise ",
+      "TempsMoyenRecette": 3,
+      "Cout": "40"
+    }
+  ],
+  "TempsMoyen": 3,
+  "BesoinKitUsentile": false,
+  "AjoutCondiment": false
+},{
+  "_id": {
+    "$oid": "61bca777f919fff3fdb43c05"
+  },
+  "DateCommande": {
+    "$date": "2021-12-17T15:06:31.539Z"
+  },
+  "CoutCommande": "39",
+  "ListRecettes": [
+    {
+      "QuantiteDispo": 3,
+      "AffichageMenuIngredient": "Pates: 150 Gr\nPatates: 20 Gr\n",
+      "CategorieRecette": 5,
+      "LstQuantiteDeAliment": [
+        150,
+        20
+      ],
+      "LstTypeAliment": [
+        {
+          "_id": {
+            "$oid": "61bca17e4e393dc048ae17f2"
+          },
+          "Nom": "Pates",
+          "Quantite": 600,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1534e393dc048ae17f1"
+          },
+          "Nom": "Patates",
+          "Quantite": 400,
+          "Unite": "Gr"
+        }
+      ],
+      "NomRecette": "Tortilini",
+      "DescritpionRecette": "Des pâtes",
+      "TempsMoyenRecette": 12,
+      "Cout": "14"
+    },
+    {
+      "QuantiteDispo": 2,
+      "AffichageMenuIngredient": "Boeuf Haché: 150 Gr\nSel: 15 Mg\nCuisse Poulet: 1 Unité\nSauce BBQ: 1 L\n",
+      "CategorieRecette": 0,
+      "LstQuantiteDeAliment": [
+        150,
+        15,
+        1,
+        1
+      ],
+      "LstTypeAliment": [
+        {
+          "_id": {
+            "$oid": "61bca2154e393dc048ae17fa"
+          },
+          "Nom": "Boeuf Haché",
+          "Quantite": 20000,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1b64e393dc048ae17f5"
+          },
+          "Nom": "Sel",
+          "Quantite": 1000,
+          "Unite": "Mg"
+        },
+        {
+          "_id": {
+            "$oid": "61bca2244e393dc048ae17fb"
+          },
+          "Nom": "Cuisse Poulet",
+          "Quantite": 200,
+          "Unite": "Unité"
+        },
+        {
+          "_id": {
+            "$oid": "61bca18b4e393dc048ae17f3"
+          },
+          "Nom": "Sauce BBQ",
+          "Quantite": 3,
+          "Unite": "L"
+        }
+      ],
+      "NomRecette": "Burger Triangle",
+      "DescritpionRecette": "Ca alors! Un burger en pyramide!",
+      "TempsMoyenRecette": 14,
+      "Cout": "25"
+    }
+  ],
+  "TempsMoyen": 26,
+  "BesoinKitUsentile": false,
+  "AjoutCondiment": false
+},{
+  "_id": {
+    "$oid": "61bca777f919fff3fdb43c07"
+  },
+  "DateCommande": {
+    "$date": "2021-12-17T15:06:31.539Z"
+  },
+  "CoutCommande": "39",
+  "ListRecettes": [
+    {
+      "QuantiteDispo": 3,
+      "AffichageMenuIngredient": "Pates: 150 Gr\nPatates: 20 Gr\n",
+      "CategorieRecette": 5,
+      "LstQuantiteDeAliment": [
+        150,
+        20
+      ],
+      "LstTypeAliment": [
+        {
+          "_id": {
+            "$oid": "61bca17e4e393dc048ae17f2"
+          },
+          "Nom": "Pates",
+          "Quantite": 600,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1534e393dc048ae17f1"
+          },
+          "Nom": "Patates",
+          "Quantite": 400,
+          "Unite": "Gr"
+        }
+      ],
+      "NomRecette": "Tortilini",
+      "DescritpionRecette": "Des pâtes",
+      "TempsMoyenRecette": 12,
+      "Cout": "14"
+    },
+    {
+      "QuantiteDispo": 2,
+      "AffichageMenuIngredient": "Boeuf Haché: 150 Gr\nSel: 15 Mg\nCuisse Poulet: 1 Unité\nSauce BBQ: 1 L\n",
+      "CategorieRecette": 0,
+      "LstQuantiteDeAliment": [
+        150,
+        15,
+        1,
+        1
+      ],
+      "LstTypeAliment": [
+        {
+          "_id": {
+            "$oid": "61bca2154e393dc048ae17fa"
+          },
+          "Nom": "Boeuf Haché",
+          "Quantite": 20000,
+          "Unite": "Gr"
+        },
+        {
+          "_id": {
+            "$oid": "61bca1b64e393dc048ae17f5"
+          },
+          "Nom": "Sel",
+          "Quantite": 1000,
+          "Unite": "Mg"
+        },
+        {
+          "_id": {
+            "$oid": "61bca2244e393dc048ae17fb"
+          },
+          "Nom": "Cuisse Poulet",
+          "Quantite": 200,
+          "Unite": "Unité"
+        },
+        {
+          "_id": {
+            "$oid": "61bca18b4e393dc048ae17f3"
+          },
+          "Nom": "Sauce BBQ",
+          "Quantite": 3,
+          "Unite": "L"
+        }
+      ],
+      "NomRecette": "Burger Triangle",
+      "DescritpionRecette": "Ca alors! Un burger en pyramide!",
+      "TempsMoyenRecette": 14,
+      "Cout": "25"
+    }
+  ],
+  "TempsMoyen": 26,
+  "BesoinKitUsentile": false,
+  "AjoutCondiment": false
+}]

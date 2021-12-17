@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "61bca1ad4e393dc048ae17f4"
+  },
+  "Nom": "Broccoli",
+  "Quantite": 800,
+  "Unite": "Gr"
+},{
+  "_id": {
+    "$oid": "61bca1e94e393dc048ae17f8"
+  },
+  "Nom": "Bouteille d'eau",
+  "Quantite": 300,
+  "Unite": "Unité"
+},{
+  "_id": {
+    "$oid": "61bca2024e393dc048ae17f9"
+  },
+  "Nom": "7Up 500ml",
+  "Quantite": 300,
+  "Unite": "Unité"
+},{
+  "_id": {
+    "$oid": "61bca1b64e393dc048ae17f5"
+  },
+  "Nom": "Sel",
+  "Quantite": 940,
+  "Unite": "Mg"
+},{
+  "_id": {
+    "$oid": "61bca1c64e393dc048ae17f6"
+  },
+  "Nom": "Tomates",
+  "Quantite": 790,
+  "Unite": "Gr"
+},{
+  "_id": {
+    "$oid": "61bca1d94e393dc048ae17f7"
+  },
+  "Nom": "Chocolat",
+  "Quantite": 1230,
+  "Unite": "Gr"
+},{
+  "_id": {
+    "$oid": "61bca2154e393dc048ae17fa"
+  },
+  "Nom": "Boeuf Haché",
+  "Quantite": 19150,
+  "Unite": "Gr"
+},{
+  "_id": {
+    "$oid": "61bca2244e393dc048ae17fb"
+  },
+  "Nom": "Cuisse Poulet",
+  "Quantite": 188,
+  "Unite": "Unité"
+},{
+  "_id": {
+    "$oid": "61bca1534e393dc048ae17f1"
+  },
+  "Nom": "Patates",
+  "Quantite": 210,
+  "Unite": "Gr"
+},{
+  "_id": {
+    "$oid": "61bca9277e1860f56bfbcbb1"
+  },
+  "Nom": "Sauce BBQ",
+  "Quantite": 10,
+  "Unite": "L"
+},{
+  "_id": {
+    "$oid": "61bca9387e1860f56bfbcbb2"
+  },
+  "Nom": "Pates",
+  "Quantite": 1500,
+  "Unite": "Gr"
+}]
